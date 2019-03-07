@@ -1,0 +1,39 @@
+{
+	"name": "refdate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MyAzureBlobLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "Trip_Month",
+				"type": "String"
+			},
+			{
+				"name": "Month_Name_Short",
+				"type": "String"
+			},
+			{
+				"name": "Month_Name_Full",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "trip_month_lookup.csv",
+			"folderPath": "nyctaxi-staging/reference-data"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

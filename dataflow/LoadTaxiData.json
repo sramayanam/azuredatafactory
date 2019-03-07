@@ -1,0 +1,63 @@
+{
+	"name": "LoadTaxiData",
+	"properties": {
+		"sources": [
+			{
+				"dataset": {
+					"referenceName": "inputdata",
+					"type": "DatasetReference"
+				},
+				"name": "rawdata",
+				"script": "source(output(\n\t\tvendor_id as string,\n\t\tpickup_datetime as string,\n\t\tdropoff_datetime as string,\n\t\tpassenger_count as string,\n\t\ttrip_distance as string,\n\t\tpickup_longitude as string,\n\t\tpickup_latitude as string,\n\t\trate_code as string,\n\t\tstore_and_fwd_flag as string,\n\t\tdropoff_longitude as string,\n\t\tdropoff_latitude as string,\n\t\tpayment_type as string,\n\t\tfare_amount as float,\n\t\tsurcharge as float,\n\t\tmta_tax as float,\n\t\ttip_amount as float,\n\t\ttolls_amount as float,\n\t\ttotal_amount as float,\n\t\tmonth as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> rawdata"
+			},
+			{
+				"dataset": {
+					"referenceName": "refdate",
+					"type": "DatasetReference"
+				},
+				"name": "refmonth",
+				"script": "source(output(\n\t\tTrip_Month as string,\n\t\tMonth_Name_Short as string,\n\t\tMonth_Name_Full as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> refmonth"
+			},
+			{
+				"dataset": {
+					"referenceName": "paymenttype",
+					"type": "DatasetReference"
+				},
+				"name": "paymenttype",
+				"script": "source(output(\n\t\tProp_0 as string,\n\t\tProp_1 as string,\n\t\tProp_2 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> paymenttype"
+			}
+		],
+		"sinks": [
+			{
+				"dataset": {
+					"referenceName": "AzureSqlDWstaging",
+					"type": "DatasetReference"
+				},
+				"name": "Writetosqldw",
+				"script": "selectreqcolumns sink(format: 'table',\n\tstaged: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tsaveMode:'overwrite') ~> Writetosqldw"
+			}
+		],
+		"transformations": [
+			{
+				"name": "parsetimestamp",
+				"script": "rawdata derive(monthnumber = month(toTimestamp(pickup_datetime,'yyyy-mm-dd HH:mm:ss'))) ~> parsetimestamp"
+			},
+			{
+				"name": "getmonthname",
+				"script": "parsetimestamp, castdatatype join(monthnumber == Trip_Month,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> getmonthname"
+			},
+			{
+				"name": "castdatatype",
+				"script": "refmonth derive(Trip_Month = toInteger(Trip_Month)) ~> castdatatype"
+			},
+			{
+				"name": "GetPaymentType",
+				"script": "paymenttype, getmonthname join(Prop_1 == payment_type,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> GetPaymentType"
+			},
+			{
+				"name": "selectreqcolumns",
+				"script": "GetPaymentType select(mapColumn(\n\t\tPaymentType = Prop_2,\n\t\tvendor_id,\n\t\tpickup_datetime,\n\t\tdropoff_datetime,\n\t\tpassenger_count,\n\t\ttrip_distance,\n\t\tpickup_longitude,\n\t\tpickup_latitude,\n\t\trate_code,\n\t\tstore_and_fwd_flag,\n\t\tdropoff_longitude,\n\t\tdropoff_latitude,\n\t\tfare_amount,\n\t\tsurcharge,\n\t\tmta_tax,\n\t\ttip_amount,\n\t\ttolls_amount,\n\t\ttotal_amount,\n\t\tmonthnum = month,\n\t\ttaxitype = type,\n\t\tMonth_Name_Short,\n\t\tMonth_Name_Full\n\t))~> selectreqcolumns"
+			}
+		]
+	}
+}

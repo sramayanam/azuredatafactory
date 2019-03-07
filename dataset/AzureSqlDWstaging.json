@@ -1,0 +1,14 @@
+{
+	"name": "AzureSqlDWstaging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDW1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlDWTable",
+		"typeProperties": {
+			"tableName": "[dbo].[staging]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,24 @@
+{
+	"name": "AzureBlob2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MyAzureBlobLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "yellow_tripdata_2013-02.csv",
+			"folderPath": "nyctaxi-staging/transactional-data/year=2013/month=02/type=yellow"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
