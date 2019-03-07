@@ -1,0 +1,39 @@
+{
+	"name": "TaxiDemoPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "TaxiDemo",
+				"type": "ExecuteDataFlow",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "TaxiDemo",
+						"type": "DataFlowReference"
+					},
+					"linkedService": {
+						"referenceName": "MyDataBricksLinkedService",
+						"type": "LinkedServiceReference"
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "MyAzureBlobLinkedService",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "demo/staging"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Data Flow Demos"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
