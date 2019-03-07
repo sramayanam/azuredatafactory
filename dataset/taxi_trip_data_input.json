@@ -8,23 +8,7 @@
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "medallion",
-				"type": "String"
-			},
-			{
-				"name": "hack_license",
-				"type": "String"
-			},
-			{
 				"name": "vendor_id",
-				"type": "String"
-			},
-			{
-				"name": "rate_code",
-				"type": "String"
-			},
-			{
-				"name": "store_and_fwd_flag",
 				"type": "String"
 			},
 			{
@@ -40,10 +24,6 @@
 				"type": "String"
 			},
 			{
-				"name": "trip_time_in_secs",
-				"type": "String"
-			},
-			{
 				"name": "trip_distance",
 				"type": "String"
 			},
@@ -56,11 +36,47 @@
 				"type": "String"
 			},
 			{
+				"name": "rate_code",
+				"type": "String"
+			},
+			{
+				"name": "store_and_fwd_flag",
+				"type": "String"
+			},
+			{
 				"name": "dropoff_longitude",
 				"type": "String"
 			},
 			{
 				"name": "dropoff_latitude",
+				"type": "String"
+			},
+			{
+				"name": "payment_type",
+				"type": "String"
+			},
+			{
+				"name": "fare_amount",
+				"type": "String"
+			},
+			{
+				"name": "surcharge",
+				"type": "String"
+			},
+			{
+				"name": "mta_tax",
+				"type": "String"
+			},
+			{
+				"name": "tip_amount",
+				"type": "String"
+			},
+			{
+				"name": "tolls_amount",
+				"type": "String"
+			},
+			{
+				"name": "total_amount",
 				"type": "String"
 			}
 		],
@@ -74,8 +90,8 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": true
 			},
-			"fileName": "trip_data_1.csv",
-			"folderPath": "demo"
+			"fileName": "yellow_tripdata_2013-01.csv",
+			"folderPath": "nyctaxi-staging/transactional-data/year=2013/month=01/type=yellow"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
