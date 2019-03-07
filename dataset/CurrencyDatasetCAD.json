@@ -1,40 +1,40 @@
 {
-	"name": "AzureBlob2",
+	"name": "CurrencyDatasetCAD",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
-		"folder": {
-			"name": "Misc"
-		},
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "PreviousConversionRate",
+				"type": "Int32"
+			},
+			{
+				"name": "Country",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
-				"type": "String"
+				"name": "DateTime1",
+				"type": "DateTime"
 			},
 			{
-				"name": "Prop_2",
-				"type": "String"
+				"name": "CurrentConversionRate",
+				"type": "Int32"
 			}
 		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
-				"columnDelimiter": ",",
+				"columnDelimiter": "\t",
 				"rowDelimiter": "",
-				"nullValue": "\\N",
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "Currency_CAD.txt",
+			"folderPath": "demo"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

@@ -1,28 +1,11 @@
 {
-	"name": "AzureBlob2",
+	"name": "CADOutput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
-		"folder": {
-			"name": "Misc"
-		},
 		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
-				"type": "String"
-			}
-		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -33,8 +16,8 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "",
+			"folderPath": "demo/output/currency"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

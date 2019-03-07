@@ -1,5 +1,5 @@
 {
-	"name": "AzureBlob2",
+	"name": "jsonblob",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
@@ -11,29 +11,32 @@
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "_id",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
+				"name": "city",
 				"type": "String"
 			},
 			{
-				"name": "Prop_2",
+				"name": "loc",
+				"type": "String"
+			},
+			{
+				"name": "pop",
+				"type": "Int64"
+			},
+			{
+				"name": "state",
 				"type": "String"
 			}
 		],
 		"typeProperties": {
 			"format": {
-				"type": "TextFormat",
-				"columnDelimiter": ",",
-				"rowDelimiter": "",
-				"nullValue": "\\N",
-				"treatEmptyAsNull": true,
-				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
 			},
-			"fileName": "movies*.csv",
+			"fileName": "zips.json",
 			"folderPath": "mycontainer/SampleData"
 		}
 	},

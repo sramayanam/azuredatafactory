@@ -1,11 +1,11 @@
 {
-	"name": "AzureBlob1",
+	"name": "DestinationDataset_xps",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "adlsgen2",
 			"type": "LinkedServiceReference"
 		},
-		"type": "AzureBlob",
+		"type": "AzureBlobFSFile",
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -14,10 +14,10 @@
 				"nullValue": "\\N",
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
 			"fileName": "",
-			"folderPath": "demo/cleanmovie"
+			"folderPath": "copyfromsql2"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

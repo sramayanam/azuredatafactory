@@ -1,25 +1,22 @@
 {
-	"name": "AzureBlob2",
+	"name": "SourceDataset_unp",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
-		"folder": {
-			"name": "Misc"
-		},
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "Env",
+				"type": "Int64"
+			},
+			{
+				"name": "LibraryName",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
+				"name": "ObjectName",
 				"type": "String"
 			}
 		],
@@ -29,12 +26,13 @@
 				"columnDelimiter": ",",
 				"rowDelimiter": "",
 				"nullValue": "\\N",
+				"encodingName": null,
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "SupplyChain_XA_Files.csv",
+			"folderPath": "raw"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

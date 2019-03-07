@@ -1,40 +1,25 @@
 {
-	"name": "AzureBlob2",
+	"name": "DestinationDataset_dia",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
-		"folder": {
-			"name": "Misc"
-		},
 		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
-				"type": "String"
-			}
-		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": ",",
-				"rowDelimiter": "",
 				"nullValue": "\\N",
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "moviesout.csv",
+			"folderPath": {
+				"value": "@concat('demo/movie_sink/', formatDateTime(trigger().startTime, 'yyyy'), '/', formatDateTime(trigger().startTime, 'MM'), '/', formatDateTime(trigger().startTime, 'dd'))",
+				"type": "Expression"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

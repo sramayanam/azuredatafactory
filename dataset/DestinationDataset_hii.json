@@ -1,28 +1,14 @@
 {
-	"name": "AzureBlob2",
+	"name": "DestinationDataset_hii",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Misc"
+			"name": "Copy"
 		},
 		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
-				"type": "String"
-			}
-		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -33,8 +19,8 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "_committed_2034928433163805213",
+			"folderPath": "mycontainer/output/sample"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

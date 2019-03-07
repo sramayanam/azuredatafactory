@@ -1,0 +1,28 @@
+{
+	"name": "DestinationDataset_unp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "env",
+				"type": "String"
+			},
+			{
+				"name": "LibraryName",
+				"type": "String"
+			},
+			{
+				"name": "ObjectName",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[xa]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,40 +1,27 @@
 {
-	"name": "AzureBlob2",
+	"name": "salesdrift",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Misc"
+			"name": "Drifts"
 		},
 		"type": "AzureBlob",
-		"structure": [
-			{
-				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
-				"type": "String"
-			}
-		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
 				"columnDelimiter": ",",
 				"rowDelimiter": "",
 				"nullValue": "\\N",
+				"encodingName": null,
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "",
+			"folderPath": "mycontainer/SampleData/SchemaDrift"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

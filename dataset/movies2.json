@@ -1,25 +1,25 @@
 {
-	"name": "AzureBlob2",
+	"name": "movies2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MyAzureBlobLinkedService",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Misc"
+			"name": "Demos"
 		},
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "movieId",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
+				"name": "title",
 				"type": "String"
 			},
 			{
-				"name": "Prop_2",
+				"name": "genres",
 				"type": "String"
 			}
 		],
@@ -28,12 +28,14 @@
 				"type": "TextFormat",
 				"columnDelimiter": ",",
 				"rowDelimiter": "",
+				"quoteChar": "\"",
 				"nullValue": "\\N",
+				"encodingName": null,
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
-			"fileName": "movies*.csv",
+			"fileName": "movies.csv",
 			"folderPath": "mycontainer/SampleData"
 		}
 	},

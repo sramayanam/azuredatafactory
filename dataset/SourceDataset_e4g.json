@@ -1,0 +1,14 @@
+{
+	"name": "SourceDataset_e4g",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "[dbo].[mktzips]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

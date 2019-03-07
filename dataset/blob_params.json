@@ -1,25 +1,17 @@
 {
-	"name": "AzureBlob2",
+	"name": "blob_params",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Misc"
+			"name": "Params"
 		},
 		"type": "AzureBlob",
 		"structure": [
 			{
 				"name": "Prop_0",
-				"type": "String"
-			},
-			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
 				"type": "String"
 			}
 		],
@@ -29,13 +21,13 @@
 				"columnDelimiter": ",",
 				"rowDelimiter": "",
 				"nullValue": "\\N",
+				"encodingName": null,
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "movies*.csv",
+			"fileName": "params-red.csv",
 			"folderPath": "mycontainer/SampleData"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

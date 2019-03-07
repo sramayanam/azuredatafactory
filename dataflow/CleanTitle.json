@@ -1,0 +1,33 @@
+{
+	"name": "CleanTitle",
+	"properties": {
+		"sources": [
+			{
+				"dataset": {
+					"referenceName": "MoviesDBDataset",
+					"type": "DatasetReference"
+				},
+				"name": "MoviesDBDataset",
+				"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as integer,\n\t\tRating as integer,\n\t\t{Rotton Tomato} as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> MoviesDBDataset"
+			},
+			{
+				"dataset": {
+					"referenceName": "dfparameters",
+					"type": "DatasetReference"
+				},
+				"name": "dfparameters",
+				"script": "source(output(\n\t\tkey as string,\n\t\tvalue as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> dfparameters"
+			}
+		],
+		"transformations": [
+			{
+				"name": "CleanTitle",
+				"script": "parameterlookup derive(title = iif(locate(' (',title)==0,title,left(title,locate(' (',title)))) ~> CleanTitle"
+			},
+			{
+				"name": "parameterlookup",
+				"script": "MoviesDBDataset, dfparameters lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),\n\tbroadcast: 'none')~> parameterlookup"
+			}
+		]
+	}
+}

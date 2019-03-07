@@ -1,11 +1,11 @@
 {
-	"name": "AzureBlob1",
+	"name": "adfpickup",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "linkedService1",
 			"type": "LinkedServiceReference"
 		},
-		"type": "AzureBlob",
+		"type": "FileShare",
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
@@ -16,9 +16,7 @@
 				"skipLineCount": 0,
 				"firstRowAsHeader": false
 			},
-			"fileName": "",
-			"folderPath": "demo/cleanmovie"
+			"fileName": "*.jpg"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

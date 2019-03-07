@@ -1,8 +1,8 @@
 {
-	"name": "AzureBlob1",
+	"name": "others",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"type": "AzureBlob",
@@ -17,8 +17,7 @@
 				"firstRowAsHeader": false
 			},
 			"fileName": "",
-			"folderPath": "demo/cleanmovie"
+			"folderPath": "mycontainer/output/others"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

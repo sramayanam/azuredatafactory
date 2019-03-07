@@ -1,25 +1,18 @@
 {
-	"name": "AzureBlob2",
+	"name": "locationMap",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MyAzureBlobLinkedService",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
-		},
-		"folder": {
-			"name": "Misc"
 		},
 		"type": "AzureBlob",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "Type",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
-				"type": "String"
-			},
-			{
-				"name": "Prop_2",
+				"name": "Name",
 				"type": "String"
 			}
 		],
@@ -28,14 +21,15 @@
 				"type": "TextFormat",
 				"columnDelimiter": ",",
 				"rowDelimiter": "",
+				"quoteChar": "\"",
 				"nullValue": "\\N",
+				"encodingName": null,
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
-			"fileName": "movies*.csv",
-			"folderPath": "mycontainer/SampleData"
+			"fileName": "locationMap.csv",
+			"folderPath": "mycontainer/SampleData/Soccer"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
